@@ -1,0 +1,63 @@
+.hero-text a {
+  color: white;
+}
+
+
+a {
+  color:green;
+}
+#collectietekst h1 {
+  padding-top: 10%;
+  font-size:4em;
+  text-align: center;
+  color: #0000005e;
+  /*color: #3e3f3a;*/
+  font-family: Tangerine;
+
+}
+.container-fluid {
+  padding-top: 0%;
+}
+
+
+img {
+  width: 100%;
+  background-size: cover;
+  transform:rotate(180deg);
+}
+
+
+.hero-image {
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../media/product_images/castle-1275465_960_720.jpg");*/
+  /*height: 50%;*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
+}
+

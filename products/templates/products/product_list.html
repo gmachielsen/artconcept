@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% load static %} {% load bootstrap_tags %} {% block head_style %} {{ block.super }}
+<link rel="stylesheet" href="{% static 'css/product_list.css' %}" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> {% endblock %} {% block content %}
+
+<div class="container-artconcept">
+
+    <div class="artconcept" id="artconcept">
+        <div class="hero-image">
+            <img src="../media/product_images/20181003_100528.jpg" />
+            <div class="hero-text">
+                <h1 style="font-size:50px">Art-Concept</h1>
+                <p>Passie voor kunst</p>
+                <a href="#collectietekst"><button>Bekijk</button></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="collectietekst">
+            <H1>Collectie</H1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        {% for product in products %}
+        <div class="heart">
+            <form method="post" action="{% url 'add_to_cart' %}?next={{request.path}}">
+                <input type="hidden" name="id" value="{{product.id}}" />
+                <input type="hidden" name="quantity" value="1" /> {% csrf_token %}
+                <button type="submit" class="btn"><i class="far fa-plus-square fa-3x"></i></i></i></button>
+            </form>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-lg-4 col-md-4">
+            <a href="{% url 'product_detail' product.id %}">
+                <div class="thumbnail">
+                    <img src="{{MEDIA_URL}}{{product.image}}" alt="">
+            </a>
+            <div class="caption">
+                <h4 class="pull-right">€{{product.price}}</h4>
+                <h4>{{product.name}}</h4>
+                <p>{{product.description | linebreaksbr }}</p>
+                <p>{{product.brand}}</p>
+
+            </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %} {% endfor %}
+    </div>
+</div>
+<section id="float-back-to-top" class="py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a href="#" id="scroll" style="display: none;">
+                            <span>
+                                <i class="fas fa-chevron-circle-up fa-3x mb-2"></i>
+                            </span>
+                        </a>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Navigation Smooth Scrolling
+    $("#artconcept a").on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+
+            const hash = this.hash;
+
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function() {
+
+                window.location.hash = hash;
+            });
+        }
+    });
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('#scroll').fadeIn();
+        }
+        else {
+            $('#scroll').fadeOut();
+        }
+    });
+    $('#scroll').click(function() {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+</script>
+{% endblock content %}

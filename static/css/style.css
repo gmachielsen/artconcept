@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    padding:0%;
+    margin: 0%;
+    width:100%;
+    /*padding-top: 100px;*/
+}
+
+.container {
+    width:100%;
+}
+
+.navbar {
+    opacity: 0.8;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+/*.row {*/
+/*    margin: 0%;*/
+/*}*/
+
+/*.container-fluid {*/
+/*    padding: 0%;*/
+/*}*/
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid #ededed;
+    color: #A9A9A9;
+}
+
+.icon-bar {
+    background-color: #fff;
+}
+
+.accountform {
+    padding-top: 20px;
+}
+
