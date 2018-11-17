@@ -2,6 +2,34 @@
   color: white;
 }
 
+.menu {
+  background-color: #b5b0b0;
+}
+
+select {
+  background-color:white;
+  padding:5px;
+  width:100%;
+  text-align: center;
+}
+
+.productfoto {
+  transform: rotate(180deg);
+}
+.filter-search {
+  background-color: white;
+  width: 100%;
+  padding: 5px;
+}
+@media only screen and (min-width: 600px) {
+.menucontainer {
+  padding-top: 4%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 8%;
+}
+}
+
 
 a {
   color:green;
@@ -61,3 +89,7 @@ img {
   color: white;
 }
 
+.menu h3 {
+  text-align: center;
+  
+}

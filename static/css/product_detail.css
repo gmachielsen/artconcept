@@ -1,0 +1,26 @@
+.productbeschrijving {
+    padding-top: 10%;
+}
+
+.gegevens {
+    padding-left: 3%;
+}
+
+.card-title {
+    padding-top: 7%;
+   padding-left: 5%;
+}
+
+.gegevens h4 {
+    padding-right: 27px;
+}
+
+.card img {
+    width: 100%;
+ 
+    background-size: cover;
+}
+
+.extraimages img {
+   display: table;
+}

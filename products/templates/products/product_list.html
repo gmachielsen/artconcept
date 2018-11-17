@@ -24,21 +24,71 @@
         </div>
     </div>
 </div>
+<div class = "menucontainer">
+ <section class="container menu">
+            <section class="row">
+                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    
+                    <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Stijl:</h3>
+                            <select name="stijlen"><option value={{ search_form.stijl }}</select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Oriëntatie:</h3>
+                            <select name="orientaties"><option value={{ search_form.oriëntatie }}</option></select></section>
+                    </section>
+                    <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Techniek:</h3>
+                            <select name="tecjniek"><option value={{ search_form.techniek }}</option></select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Kunstenaar:</h3>
+                            <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>
+                    </section>
+                    
+                </section>
+                
+                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    
+                   <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Thema:</h3>
+                            <select name="Thema"><option value={{ search_form.thema }}</select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Formaat:</h3>
+                            <select name="Formaat"><option value={{ search_form.formaat }}</option></select></section>
+                    </section>
+                    <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Prijsklasse:</h3>
+                            <select name="kunstenaar"><option value={{ search_form.prijs }}</option></select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3 class="nomargin">Zoek op:</h3>
+                            <div class="filter-search">
+                                <input type="text"  placeholder="Titel, nummer, etc..." class="{{ search_form.search }}"/>
+                                <ul class="custom-autocomplete"></ul>
+                            </div>
+                    </section>
+                    
+                </section>
+            </section>
+                    </section>
+      
+    </section>
+    </div>
+       
+    
 <div class="container-fluid">
     <div class="row">
 
         {% for product in products %}
-        <div class="heart">
-            <form method="post" action="{% url 'add_to_cart' %}?next={{request.path}}">
-                <input type="hidden" name="id" value="{{product.id}}" />
-                <input type="hidden" name="quantity" value="1" /> {% csrf_token %}
-                <button type="submit" class="btn"><i class="far fa-plus-square fa-3x"></i></i></i></button>
-            </form>
-        </div>
+       
         <div class="col-xs-6 col-sm-4 col-lg-4 col-md-4">
             <a href="{% url 'product_detail' product.id %}">
                 <div class="thumbnail">
+                    <div class="productfoto">
                     <img src="{{MEDIA_URL}}{{product.image}}" alt="">
+                    </div>
             </a>
             <div class="caption">
                 <h4 class="pull-right">€{{product.price}}</h4>
