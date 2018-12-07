@@ -1,197 +1,126 @@
-{% extends "base.html" %} {% load static %} {% load bootstrap_tags %} {% block head_style %} {{ block.super }}
+{% extends "base.html" %}
+{% load static %} 
+{% load bootstrap_tags %} 
+{% block head_style %} 
+{{ block.super }}
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="{% static 'css/product_detail.css' %}" type="text/css" /> {% endblock %} {% block content %}
-
-
-
-<div class="productbeschrijving col-lg-12">
-
-</div>
-<div class="col-sm-6">
-  <div class="card mt-4">
-    <div class="carousel slide" id="myCarousel">
-      <!-- Carousel items -->
-      {% for image in product_images %}
-      <div class="carousel-inner">
-
-        <div class="active item" data-slide-number="0">
-          {% if forloop.counter == 1 %}
-          <img width="500px" src="{{MEDIA_URL}}{{image.image}}" alt=""> 
-          {% endif %}
-          <!--<div class="item" data-slide-number="1">-->
-          <!--  {% if forloop.counter == 2 %}-->
-          <!--  <img width="10%" class="card-img-top img-fluid" src="{{MEDIA_URL}}{{image.image}}" alt=""> -->
-          <!--  {% endif %}-->
-
-          </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" data-slide="prev" href="#myCarousel">‹</a> <a class="carousel-control right" data-slide="next" href="#myCarousel">›</a>
-        </div>
-        {% endfor %}
-      </div>
-      
-      
-      {% for image in product_images %}
-      <div class="row">
-        <div class="col-sm-12">
-         
-            <div class="row hidden-phone" id="slider-thumbs">
-                    <div class="span12">
-                        <!-- Bottom switcher of slider -->
-
-                        <ul class="thumbnails">
-                            <li class="span2">
-                               {% if forloop.counter == 1 %}
-                                <a class="thumbnail" id="carousel-selector-0"><img width="500px" src="{{MEDIA_URL}}{{image.image}}" alt=""></a>
-                                {% endif %}
-                            </li>
-
-                            <li class="span2">
-                                 {% if forloop.counter == 2 %}
-                                <a class="thumbnail" id="carousel-selector-0"><img width="500px" src="{{MEDIA_URL}}{{image.image}}" alt=""></a>
-                                {% endif %}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-          </div>
-       
-      </div>
-      {% endfor %}
-      <table>
-        <tr>
-          <th>
-            <h4> Titel:</h4>
-          </th>
-          <th>
-            <h4> {{product.name}}</h4>
-          </th>
-        </tr>
-      </table>
-      <div class="card-body">
-        <h4>€{{product.price}}</h4>
-        <p class="card-text">{{product.description}}</p>
-      </div>
-
-    </div>
-
-    <!-- /.card -->
-    <div class="gegevens col-sm-6 ">
-      <table>
-
-
-        <tr>
-          <th>
-            <h4> Prijs Kunstwerk</h4>
-          </th>
-          <th>
-            <h4> €{{product.price}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Betaalvorm</h4>
-          </th>
-          <th>
-            <h4>{{product.get_prijstype_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Oriëntatie Kunstwerk</h4>
-          </th>
-          <th>
-            <h4>{{product.get_oriëntatie_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Gebruikte techniek</h4>
-          </th>
-          <th>
-            <h4>{{product.get_techniek_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Stijl</h4>
-          </th>
-          <th>
-            <h4>{{product.get_stijl_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Ingelijst</h4>
-          </th>
-          <th>
-            <h4>{{product.get_lijst_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Ingelijst</h4>
-          </th>
-          <th>
-            <h4>{{product.get_lijst_display}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Horizontale lengte in cm</h4>
-          </th>
-          <th>
-            <h4>{{product.lengthcm}}</h4>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <h4> Verticale lengte in cm</h4>
-          </th>
-          <th>
-            <h4>{{product.widthcm}}</h4>
-          </th>
-        </tr>
-      </table>
-    </div>
-
-
-
-
-    <!-- /.col-lg-9 -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <img class="card-img-top img-fluid" src="{{MEDIA_URL}}{{artist.image}}" alt=""><br>
-        </div>
-        <p>{{artist.description}}</p>
-
-      </div>
-    </div>
+<link rel="stylesheet" href="{% static 'css/product_detail.css' %}" type="text/css" /> 
+{% endblock %} 
+{% block content %}
     
-    <script>
-      jQuery(document).ready(function($) {
- 
-        $('#myCarousel').carousel({
-                interval: 5000
-        });
- 
-        $('#carousel-text').html($('#slide-content-0').html());
- 
-        //Handles the carousel thumbnails
-        $('[id^=carousel-selector-]').click( function(){
-                var id_selector = $(this).attr("id");
-                var id = id_selector.substr(id_selector.length -1);
-                var id = parseInt(id);
-                $('#myCarousel').carousel(id);
-        });
- 
- 
 
-}); 
-    </script>
+  
+        <div class="productbeschrijving col-lg-12">
+              
+        </div>
+        <div class="col-sm-6">
+          <div class="card mt-4">
+            <img id="0" class="preview normal" class="card-img-top img-fluid" src="{{MEDIA_URL}}{{product.image}}" alt="">
+           </div>
+        {% for image in product_images %}
+        <div class="row">
+        <div class="col-sm-12">
+          <div class="extraimages">
+            {% if forloop.counter == 1 %}
+            <div class="col-sm-4">
+            <img width="100%" id="1" class="thumb normal" src="{{MEDIA_URL}}{{image.image}}" alt="" onmouseover="preview(this)">
+            </div>
+            {% endif %}
+            {% if forloop.counter == 2 %} 
+            <div class="col-sm-4">
+            <img width="100%" id="2" class="thumb normal" src="{{MEDIA_URL}}{{image.image}}" alt="" onmouseover="preview(this)">
+            </div>
+            {% endif %}
+            {% if forloop.counter == 2 %}
+            <div class="col-sm-4">
+            <img width="100%" id="3" class="thumb normal" src="{{MEDIA_URL}}{{image.image}}" alt="" onmouseover="preview(this)">
+            </div>
+            {% endif %}
+        
+          </div>
+          </div>
+         </div>
+        {% endfor %}
+        <table>
+      <tr>
+        <th><h4> Titel:</h4></th>
+        <th><h4> {{product.name}}</h4></th>
+        </tr>
+        </table>
+            <div class="card-body">
+              <h4>€{{product.price}}</h4>
+              <p class="card-text">{{product.description}}</p>
+              </div>
+              
+            </div>
+    
+          <!-- /.card -->
+        <div class="gegevens col-sm-6 ">
+        <table>
+        
+        
+        <tr>
+        <th><h4> Prijs Kunstwerk</h4></th>
+        <th><h4> €{{product.price}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Betaalvorm</h4></th>
+        <th><h4>{{product.get_prijstype_display}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Oriëntatie Kunstwerk</h4></th>
+        <th><h4>{{product.get_oriëntatie_display}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Gebruikte techniek</h4></th>
+        <th><h4>{{product.get_techniek_display}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Stijl</h4></th>
+        <th><h4>{{product.get_stijl_display}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Ingelijst</h4></th>
+        <th><h4>{{product.get_lijst_display}}</h4></th>
+        </tr>
+        <tr>
+        <th><h4> Ingelijst</h4></th>
+        <th><h4>{{product.get_lijst_display}}</h4></th>
+        </tr>
+         <tr>
+        <th><h4> Horizontale lengte in cm</h4></th>
+        <th><h4>{{product.lengthcm}}</h4></th>
+        </tr>
+         <tr>
+        <th><h4> Verticale lengte in cm</h4></th>
+        <th><h4>{{product.widthcm}}</h4></th>
+        </tr>
+        </table>
+      </div> 
+     
+         
+          
+        
+        <!-- /.col-lg-9 -->
+<div class="container">
+  <div class="row">
+    <div class= "col-sm-4">
+       <img class="card-img-top img-fluid" src="{{MEDIA_URL}}{{artist.image}}" alt=""><br>
+       </div>
+      <p>{{artist.description}}</p>
+      
+  </div>
+  </div> 
+ <script>
+    var lastImg = 1; // Set initial thumbnail and preview document.getElementById(0).src =
+    // document.getElementById(lastImg).src;
+    document.getElementById(lastImg).className = "thumb selected";
 
-    {% endblock content %}
+    function preview(img) {
+      document.getElementById(lastImg).className = "thumb normal";
+      img.className = "thumb selected";
+      document.getElementById(0).src = img.src;
+      lastImg = img.id
+    }
+  </script>
+{% endblock content %}
